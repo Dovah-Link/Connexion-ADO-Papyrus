@@ -1,6 +1,6 @@
 ﻿namespace Exo1Connection
 {
-    partial class Form1
+    partial class Exo1Connexion
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 
 namespace Exo1Connection
 {
-    public partial class Form1 : Form
+    public partial class Exo1Connexion : Form
     {
 
-        public Form1()
+        public Exo1Connexion()
         {
             InitializeComponent();
         }
