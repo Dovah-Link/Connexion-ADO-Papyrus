@@ -124,10 +124,10 @@
             // tb_erreur
             // 
             this.tb_erreur.Enabled = false;
-            this.tb_erreur.Location = new System.Drawing.Point(16, 211);
+            this.tb_erreur.Location = new System.Drawing.Point(16, 227);
             this.tb_erreur.Multiline = true;
             this.tb_erreur.Name = "tb_erreur";
-            this.tb_erreur.Size = new System.Drawing.Size(291, 157);
+            this.tb_erreur.Size = new System.Drawing.Size(291, 141);
             this.tb_erreur.TabIndex = 10;
             // 
             // Form1
