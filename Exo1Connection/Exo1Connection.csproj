@@ -52,10 +52,19 @@
     <Compile Include="Exo1Connexion.Designer.cs">
       <DependentUpon>Exo1Connexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exo2SearchInTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exo2SearchInTable.Designer.cs">
+      <DependentUpon>Exo2SearchInTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Exo1Connexion.resx">
       <DependentUpon>Exo1Connexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exo2SearchInTable.resx">
+      <DependentUpon>Exo2SearchInTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

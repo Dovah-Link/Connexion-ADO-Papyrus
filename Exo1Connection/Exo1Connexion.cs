@@ -19,7 +19,7 @@ namespace Exo1Connection
             InitializeComponent();
         }
         SqlConnection connect;
-        private void B_Connect_Click(object sender, EventArgs e)
+        private void B_Connect_Click(object sender, EventArgs e) // ------------------------------------------------- Au click sur le bouton
         {
             string serveur = tb_serveur.Text;
             string baseDD = TB_BDD.Text;
@@ -39,12 +39,12 @@ namespace Exo1Connection
             }
         }
 
-        private void Connect_StateChange(object sender, StateChangeEventArgs e)
+        private void Connect_StateChange(object sender, StateChangeEventArgs e) // ----------------------------------- Si l'etat de le connection change
         {
             LBL_EtatConnect.Text = e.CurrentState.ToString();
         }
 
-        private void B_deco_Click(object sender, EventArgs e)
+        private void B_deco_Click(object sender, EventArgs e) // ----------------------------------------------------- Au click sur deconnexion
         {
             if (connect != null)
             {
