@@ -31,7 +31,9 @@ namespace Exo1Connection
             try
             {
                 connect.Open();
-                tb_erreur.Clear();  
+                tb_erreur.Clear();
+                Exo2SearchInTable frm = new Exo2SearchInTable();
+                frm.Show();
             }
             catch(SqlException f)
             {
@@ -50,6 +52,11 @@ namespace Exo1Connection
             {
                 connect.Close();
             }
+        }
+
+        private void Exo1Connexion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

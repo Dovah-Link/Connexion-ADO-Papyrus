@@ -130,7 +130,7 @@
             this.tb_erreur.Size = new System.Drawing.Size(291, 157);
             this.tb_erreur.TabIndex = 10;
             // 
-            // Form1
+            // Exo1Connexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,8 +146,9 @@
             this.Controls.Add(this.B_Connect);
             this.Controls.Add(this.TB_BDD);
             this.Controls.Add(this.tb_serveur);
-            this.Name = "Form1";
+            this.Name = "Exo1Connexion";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Exo1Connexion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
