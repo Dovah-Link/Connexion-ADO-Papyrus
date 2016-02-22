@@ -35,9 +35,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.B_quit = new System.Windows.Forms.Button();
-            this.lb_messageConnect = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.LBL_EtatConnect = new System.Windows.Forms.Label();
+            this.tb_erreur = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tb_serveur
@@ -64,6 +64,7 @@
             this.B_Connect.TabIndex = 2;
             this.B_Connect.Text = "Connexion";
             this.B_Connect.UseVisualStyleBackColor = true;
+            this.B_Connect.Click += new System.EventHandler(this.B_Connect_Click);
             // 
             // B_deco
             // 
@@ -73,6 +74,7 @@
             this.B_deco.TabIndex = 3;
             this.B_deco.Text = "Deconnexion";
             this.B_deco.UseVisualStyleBackColor = true;
+            this.B_deco.Click += new System.EventHandler(this.B_deco_Click);
             // 
             // label1
             // 
@@ -101,14 +103,6 @@
             this.B_quit.Text = "Quitter";
             this.B_quit.UseVisualStyleBackColor = true;
             // 
-            // lb_messageConnect
-            // 
-            this.lb_messageConnect.FormattingEnabled = true;
-            this.lb_messageConnect.Location = new System.Drawing.Point(29, 214);
-            this.lb_messageConnect.Name = "lb_messageConnect";
-            this.lb_messageConnect.Size = new System.Drawing.Size(278, 134);
-            this.lb_messageConnect.TabIndex = 7;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -127,15 +121,24 @@
             this.LBL_EtatConnect.TabIndex = 9;
             this.LBL_EtatConnect.Text = "Closed";
             // 
+            // tb_erreur
+            // 
+            this.tb_erreur.Enabled = false;
+            this.tb_erreur.Location = new System.Drawing.Point(16, 211);
+            this.tb_erreur.Multiline = true;
+            this.tb_erreur.Name = "tb_erreur";
+            this.tb_erreur.Size = new System.Drawing.Size(291, 157);
+            this.tb_erreur.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(322, 380);
+            this.Controls.Add(this.tb_erreur);
             this.Controls.Add(this.LBL_EtatConnect);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lb_messageConnect);
             this.Controls.Add(this.B_quit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -159,9 +162,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button B_quit;
-        private System.Windows.Forms.ListBox lb_messageConnect;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label LBL_EtatConnect;
+        private System.Windows.Forms.TextBox tb_erreur;
     }
 }
 
