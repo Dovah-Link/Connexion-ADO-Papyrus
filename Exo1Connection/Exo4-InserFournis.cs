@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Exo1Connection
 {
@@ -30,18 +31,40 @@ namespace Exo1Connection
 
         private void B_ajout_Click(object sender, EventArgs e)
         {
-            SqlConnection connect = new SqlConnection();
-            connect.ConnectionString = "server=.;database = test; Integrated Security=True";
-            connect.Open();
+            SqlConnection connect = new SqlConnection("server=.;integrated security=True;database = test ");
             try
             {
-                string str = String.Format("INSERT INTO FOURNIS (NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) VALUES '{0}','{1}',{2},{3},{4},{5}", tb_nom.Text, tb_adresse.Text, tb_cp.Text, tb_ville.Text,tb_contact.Text, trackBar.Value.ToString());
+                connect.Open();
+
+                try
+                {
+                    int max_numfou = 0;
+                    SqlCommand requete2 = new SqlCommand("SELECT Max(NUMFOU) FROM FOURNIS",connect);
+                    SqlDataReader res2 = requete2.ExecuteReader();
+                    if (res2.Read())
+                    {
+                        max_numfou = Convert.ToInt32(res2[0]);
+                    }
+                    res2.Close();
+                    string str = String.Format("INSERT INTO FOURNIS (NUMFOU, NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) VALUES ({0},'{1}','{2}',{3},'{4}','{5}','{6}')",max_numfou+1, tb_nom.Text, tb_adresse.Text, tb_cp.Text, tb_ville.Text, tb_contact.Text, trackBar.Value.ToString());
+                    SqlCommand requete = new SqlCommand(str,connect);
+                    requete.ExecuteNonQuery();
+                    MessageBox.Show("Requetes reussi");
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show("" + er , "");
+                }
             }
-            catch(Exception er)
+            catch
             {
-                MessageBox.Show(""+er,"");
+                MessageBox.Show("Impossible de se connecter à la base de donnée", "Erreur");
             }
-            connect.Close(); 
+            finally
+            {
+                connect.Close();
+            }
+
         }
     }
 }
