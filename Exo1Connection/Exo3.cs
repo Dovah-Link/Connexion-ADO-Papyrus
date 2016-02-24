@@ -17,12 +17,6 @@ namespace Exo1Connection
         {
             InitializeComponent();
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Exo3_Load(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection("server=.; database=test; integrated security=true");
@@ -41,9 +35,10 @@ namespace Exo1Connection
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.Size = new Size(379, 277);
             label2.Visible = true;
             listView1.Visible = true;
-            //listView1.Clear();
+            listView1.Items.Clear();
 
             if (comboBox1.SelectedIndex != -1)
             {
@@ -53,15 +48,9 @@ namespace Exo1Connection
                 SqlDataReader resultat = null;
 
                 if (comboBox1.SelectedIndex == 0)
-                {
+                { 
                     SqlCommand requete = new SqlCommand(@"select * from FOURNIS join ENTCOM on ENTCOM.NUMFOU=FOURNIS.NUMFOU ", connect);
                     resultat = requete.ExecuteReader();
-
-                    ListViewItem lvi = new ListViewItem(resultat["NUMCOM"].ToString());
-                    string d = Convert.ToDateTime(resultat["DATCOM"]).ToShortDateString();
-                    lvi.SubItems.Add(d);
-                    lvi.SubItems.Add(resultat["OBSCOM"].ToString());
-                    listView1.Items.Add(lvi);
                 }
                 else
                 {
