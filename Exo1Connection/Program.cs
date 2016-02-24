@@ -16,7 +16,7 @@ namespace Exo1Connection
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Exo2SearchInTable());
+            Application.Run(new Exo3());
         }
     }
 }

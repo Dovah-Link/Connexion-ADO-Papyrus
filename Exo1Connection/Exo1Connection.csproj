@@ -58,6 +58,12 @@
     <Compile Include="Exo2SearchInTable.Designer.cs">
       <DependentUpon>Exo2SearchInTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exo3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exo3.Designer.cs">
+      <DependentUpon>Exo3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Exo1Connexion.resx">
@@ -65,6 +71,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exo2SearchInTable.resx">
       <DependentUpon>Exo2SearchInTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exo3.resx">
+      <DependentUpon>Exo3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
