@@ -64,6 +64,12 @@
     <Compile Include="Exo3.Designer.cs">
       <DependentUpon>Exo3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exo4-InserFournis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exo4-InserFournis.Designer.cs">
+      <DependentUpon>Exo4-InserFournis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Exo1Connexion.resx">
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Exo3.resx">
       <DependentUpon>Exo3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exo4-InserFournis.resx">
+      <DependentUpon>Exo4-InserFournis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
