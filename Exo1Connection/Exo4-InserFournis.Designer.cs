@@ -54,6 +54,7 @@
             this.tb_nom.Name = "tb_nom";
             this.tb_nom.Size = new System.Drawing.Size(434, 20);
             this.tb_nom.TabIndex = 0;
+            this.tb_nom.TextChanged += new System.EventHandler(this.tb_nom_TextChanged);
             // 
             // label1
             // 
@@ -96,6 +97,7 @@
             this.tb_cp.Name = "tb_cp";
             this.tb_cp.Size = new System.Drawing.Size(168, 20);
             this.tb_cp.TabIndex = 4;
+            this.tb_cp.TextChanged += new System.EventHandler(this.tb_cp_TextChanged);
             // 
             // label4
             // 
