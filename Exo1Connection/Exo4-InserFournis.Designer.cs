@@ -81,6 +81,7 @@
             this.tb_adresse.Name = "tb_adresse";
             this.tb_adresse.Size = new System.Drawing.Size(434, 59);
             this.tb_adresse.TabIndex = 2;
+            this.tb_adresse.TextChanged += new System.EventHandler(this.tb_adresse_TextChanged);
             // 
             // label3
             // 
@@ -114,6 +115,7 @@
             this.tb_ville.Name = "tb_ville";
             this.tb_ville.Size = new System.Drawing.Size(251, 20);
             this.tb_ville.TabIndex = 6;
+            this.tb_ville.TextChanged += new System.EventHandler(this.tb_ville_TextChanged);
             // 
             // label5
             // 
@@ -130,6 +132,7 @@
             this.tb_contact.Name = "tb_contact";
             this.tb_contact.Size = new System.Drawing.Size(434, 20);
             this.tb_contact.TabIndex = 8;
+            this.tb_contact.TextChanged += new System.EventHandler(this.tb_contact_TextChanged);
             // 
             // label6
             // 

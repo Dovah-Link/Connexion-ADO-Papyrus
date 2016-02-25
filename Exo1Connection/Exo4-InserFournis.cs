@@ -31,7 +31,7 @@ namespace Exo1Connection
 
         private void B_ajout_Click(object sender, EventArgs e)
         {
-            SqlConnection connect = new SqlConnection("server=.;integrated security=True;database = test ");
+            SqlConnection connect = new SqlConnection("server=.;integrated security=True;database =test ");
             try
             {
                 connect.Open();
@@ -47,15 +47,19 @@ namespace Exo1Connection
                     }
                     res2.Close();
 
-                    bool testcp = CPValide(tb_nom.Text);
+                    bool testcp = CPValide(tb_cp.Text);
                     bool testnom = NomValide(tb_nom.Text);
-                    //bool testadrs = AdrsValide(tb_adresse.Text);
-                    if (testcp == true && testnom == true)
+                    bool testadrs = AdrsValide(tb_adresse.Text);
+                    bool testcon = ConValide(tb_contact.Text);
+                    bool testville = VilleValide(tb_ville.Text);
+                    if (testcp == true && testnom == true && testadrs == true && testcon == true && testville == true)
                     {
-                        string str = String.Format("INSERT INTO FOURNIS (NUMFOU, NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) VALUES ({0},'{1}','{2}',{3},'{4}','{5}','{6}')", max_numfou + 1, tb_nom.Text, tb_adresse.Text, tb_cp.Text, tb_ville.Text, tb_contact.Text, trackBar.Value.ToString());
-                        SqlCommand requete = new SqlCommand(str, connect);
-                        requete.ExecuteNonQuery();
-                        MessageBox.Show("Requetes reussi");
+                            int a = Convert.ToInt32(tb_cp.Text);
+                            string str = String.Format("INSERT INTO FOURNIS (NUMFOU, NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) VALUES ({0},'{1}','{2}',{3},'{4}','{5}','{6}')", max_numfou + 1, tb_nom.Text, tb_adresse.Text, a, tb_ville.Text, tb_contact.Text, trackBar.Value.ToString());
+                            SqlCommand requete = new SqlCommand(str, connect);
+                            requete.ExecuteNonQuery();
+                            MessageBox.Show("Insertion reussi");
+                        
                     }
 
                 }
@@ -91,7 +95,7 @@ namespace Exo1Connection
         bool NomValide(string a)
         {
             bool b;
-            if ((Regex.IsMatch(a, "^[a-zA-Z éèêëçäà']+[[-]?[a-zA-Z éèêëçäà']+]*$") == true))
+            if ((Regex.IsMatch(a, "^[a-zA-Z][a-zA-Z]*([-]?[A-Za-z]+)*$") == true))
             {
                 b = true;
             }
@@ -101,19 +105,46 @@ namespace Exo1Connection
             }
             return b;
         }
-        //bool AdrsValide(string a)
-        //{
-        //    bool b;
-        //    if ((Regex.IsMatch(a, "^[a-zA-Z éèêëçäà']+[[-]?[a-zA-Z éèêëçäà']+]*$") == true))
-        //    {
-        //        b = true;
-        //    }
-        //    else
-        //    {
-        //        b = false;
-        //    }
-        //    return b;
-        //}
+        bool AdrsValide(string a)
+        {
+            bool b;
+            if ((Regex.IsMatch(a, "[0-9]{1,3}(?:(?:[,. ]){1}[-a-zA-Zàâäéèêëïîôöùûüç]+)+") == true))
+            {
+                b = true;
+            }
+            else
+            {
+                b = false;
+            }
+            return b;
+        }
+
+        bool VilleValide(string a)
+        {
+            bool b;
+            if ((Regex.IsMatch(a, "^[a-zA-Z][a-zA-Z]*([ '-]?[a-zA-Z]+)*$") == true))
+            {
+                b = true;
+            }
+            else
+            {
+                b = false;
+            }
+            return b;
+        }
+        bool ConValide(string a)
+        {
+            bool b;
+            if ((Regex.IsMatch(a, "^[a-zA-Z][a-zA-Z]*(([-]|[ ])?[A-Za-z]+)*$") == true))
+            {
+                b = true;
+            }
+            else
+            {
+                b = false;
+            }
+            return b;
+        }
 
         private void tb_nom_TextChanged(object sender, EventArgs e)
         {
@@ -151,6 +182,64 @@ namespace Exo1Connection
             {
                 tb_cp.BackColor = Color.Red;
                 tb_cp.ForeColor = Color.White;
+            }
+        }
+
+        private void tb_adresse_TextChanged(object sender, EventArgs e)
+        {
+            bool testadrs = AdrsValide(tb_adresse.Text);
+            if (testadrs == true)
+            {
+                tb_adresse.BackColor = Color.Green;
+                tb_adresse.ForeColor = Color.White;
+            }
+            else if (tb_adresse.Text == "")
+            {
+                tb_adresse.BackColor = Color.White;
+            }
+            else
+            {
+                tb_adresse.BackColor = Color.Red;
+                tb_adresse.ForeColor = Color.White;
+            }
+        }
+
+        private void tb_ville_TextChanged(object sender, EventArgs e)
+        {
+            bool testville = VilleValide(tb_ville.Text);
+            if (testville == true)
+            {
+                tb_ville.BackColor = Color.Green;
+                tb_ville.ForeColor = Color.White;
+            }
+            else if (tb_ville.Text == "")
+            {
+                tb_ville.BackColor = Color.White;
+                tb_ville.ForeColor = Color.Black;
+            }
+            else
+            {
+                tb_ville.BackColor = Color.Red;
+                tb_ville.ForeColor = Color.White;
+            }
+        }
+
+        private void tb_contact_TextChanged(object sender, EventArgs e)
+        {
+            bool testcon = ConValide(tb_contact.Text);
+            if (testcon == true)
+            {
+                tb_contact.BackColor = Color.Green;
+                tb_contact.ForeColor = Color.White;
+            }
+            else if (tb_contact.Text == "")
+            {
+                tb_contact.BackColor = Color.White;
+            }
+            else
+            {
+                tb_contact.BackColor = Color.Red;
+                tb_contact.ForeColor = Color.White;
             }
         }
     }
