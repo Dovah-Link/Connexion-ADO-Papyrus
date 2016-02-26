@@ -52,14 +52,14 @@ namespace Exo1Connection
                     bool testadrs = AdrsValide(tb_adresse.Text);
                     bool testcon = ConValide(tb_contact.Text);
                     bool testville = VilleValide(tb_ville.Text);
-                    if (testcp == true && testnom == true && testadrs == true && testcon == true && testville == true)
+
+                    if (testcp == true && testnom == true && testadrs == true && testcon == true && testville == true)
                     {
                             int a = Convert.ToInt32(tb_cp.Text);
                             string str = String.Format("INSERT INTO FOURNIS (NUMFOU, NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) VALUES ({0},'{1}','{2}',{3},'{4}','{5}','{6}')", max_numfou + 1, tb_nom.Text, tb_adresse.Text, a, tb_ville.Text, tb_contact.Text, trackBar.Value.ToString());
                             SqlCommand requete = new SqlCommand(str, connect);
                             requete.ExecuteNonQuery();
                             MessageBox.Show("Insertion reussi");
-                        
                     }
 
                 }
@@ -95,7 +95,7 @@ namespace Exo1Connection
         bool NomValide(string a)
         {
             bool b;
-            if ((Regex.IsMatch(a, "^[a-zA-Z][a-zA-Z]*([-]?[A-Za-z]+)*$") == true))
+            if ((Regex.IsMatch(a, "^[a-zA-Z][a-zA-Z]*(([-]|[ ]|['])?[A-Za-z]+)*$") == true))
             {
                 b = true;
             }
@@ -135,7 +135,7 @@ namespace Exo1Connection
         bool ConValide(string a)
         {
             bool b;
-            if ((Regex.IsMatch(a, "^[a-zA-Z][a-zA-Z]*(([-]|[ ])?[A-Za-z]+)*$") == true))
+            if ((Regex.IsMatch(a, "^[a-zA-Z][a-zA-Z]*(([-]|[ ]|['])?[A-Za-z]+)*$") == true))
             {
                 b = true;
             }
