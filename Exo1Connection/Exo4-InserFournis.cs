@@ -55,11 +55,24 @@ namespace Exo1Connection
 
                     if (testcp == true && testnom == true && testadrs == true && testcon == true && testville == true)
                     {
-                            int a = Convert.ToInt32(tb_cp.Text);
-                            string str = String.Format("INSERT INTO FOURNIS (NUMFOU, NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) VALUES ({0},'{1}','{2}',{3},'{4}','{5}','{6}')", max_numfou + 1, tb_nom.Text, tb_adresse.Text, a, tb_ville.Text, tb_contact.Text, trackBar.Value.ToString());
-                            SqlCommand requete = new SqlCommand(str, connect);
-                            requete.ExecuteNonQuery();
-                            MessageBox.Show("Insertion reussi");
+                        int a = Convert.ToInt32(tb_cp.Text);
+                        SqlCommand requete = new SqlCommand("INSERT INTO FOURNIS (NUMFOU, NOMFOU,RUEFOU,POSFOU,VILFOU,CONFOU,SATISF) VALUES (@numfou,@nomfou,@ruefou,@posfou,@vilfou,@confou,@satisf)", connect);
+                        requete.Parameters.AddWithValue("@numfou", max_numfou+1);
+                        requete.Parameters.AddWithValue("@nomfou", tb_nom.Text);
+                        requete.Parameters.AddWithValue("@ruefou", tb_adresse.Text);
+                        requete.Parameters.AddWithValue("@posfou", tb_cp.Text);
+                        requete.Parameters.AddWithValue("@vilfou", tb_ville.Text);
+                        requete.Parameters.AddWithValue("@confou", tb_contact.Text);
+                        if (trackBar.Value == 0)
+                        {
+                            requete.Parameters.AddWithValue("@satisf", DBNull.Value);
+                        }
+                        else
+                        {
+                            requete.Parameters.AddWithValue("@satisf", trackBar.Value);
+                        }
+                        requete.ExecuteNonQuery();
+                        MessageBox.Show("Insertion reussi");
                     }
 
                 }
@@ -149,7 +162,7 @@ namespace Exo1Connection
         private void tb_nom_TextChanged(object sender, EventArgs e)
         {
             bool testnom = NomValide(tb_nom.Text);
-            if(testnom == true)
+            if (testnom == true)
             {
                 tb_nom.BackColor = Color.Green;
                 tb_nom.ForeColor = Color.White;
@@ -167,14 +180,14 @@ namespace Exo1Connection
 
         private void tb_cp_TextChanged(object sender, EventArgs e)
         {
-            
+
             bool testcp = CPValide(tb_cp.Text);
             if (testcp == true)
             {
                 tb_cp.BackColor = Color.Green;
                 tb_cp.ForeColor = Color.White;
             }
-            else if(tb_cp.Text == "")
+            else if (tb_cp.Text == "")
             {
                 tb_cp.BackColor = Color.White;
             }
